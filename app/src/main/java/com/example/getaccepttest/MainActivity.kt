@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,20 +43,20 @@ class MainActivity : AppCompatActivity() {
         else if (score_view_two.text.isEmpty()) {
 
             score_view_two.text = "$viewTwo"
-            result_of_view_one_and_two.text = (viewOne + viewTwo).toString()
-            current_score_value.text = result_of_view_one_and_two.text
+
+            sumOfTwoInts(inputOne = score_view_one.text.toString().toInt(),
+                inputTwo = score_view_two.text.toString().toInt())
         }
         else if (score_view_three.text.isEmpty()) {
 
           score_view_three.text = "$viewThree"
-
         }
         else if (score_view_four.text.isEmpty()) {
 
             score_view_four.text = "$viewFour"
-            result_view_of_three_and_four.text = (viewOne + viewTwo + viewThree + viewFour).toString()
-            current_score_value.text = result_view_of_three_and_four.text
 
+             sumOfTwoInts(inputOne = score_view_three.text.toString().toInt(),
+                inputTwo = score_view_four.text.toString().toInt())
         }
         else if (score_view_five.text.isEmpty()) {
 
@@ -64,10 +65,33 @@ class MainActivity : AppCompatActivity() {
         else if (score_view_six.text.isEmpty()) {
 
             score_view_six.text = "$viewSix"
-            result_of_view_five_and_six.text = (viewOne + viewTwo + viewThree + viewFour + viewFive + viewSix).toString()
-            current_score_value.text = result_of_view_five_and_six.text
+
+            sumOfTwoInts(inputOne = score_view_five.text.toString().toInt(),
+                inputTwo = score_view_six.text.toString().toInt())
+
             high_score_value.text = current_score_value.text
         }
     }
+    //function that adds two numbers & prints it out in result view.
+    private fun sumOfTwoInts(inputOne: Int, inputTwo: Int){
 
+        val mySavedSum = DataStorage(this)
+        var sumCount = mySavedSum.getCurrentSum()
+        val result = inputOne + inputTwo
+
+        sumCount  = result
+        mySavedSum.setCurrentSum(sumCount)
+        current_score_value.text = sumCount.toString()
+
+        if (result_of_view_one.text.isEmpty()) {
+            result_of_view_one.text = result.toString()
+        }
+        else if (result_view_two.text.isEmpty()) {
+
+            result_view_two.text = result.toString()
+        }
+        else  {
+            result_view_three.text = result.toString()
+        }
+    }
 } // Class
