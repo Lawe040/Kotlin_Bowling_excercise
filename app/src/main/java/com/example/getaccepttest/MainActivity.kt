@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         allNumberButtons()
-        
+
         restart_button.setOnClickListener {
 
             val intent = Intent(this, MainActivity::class.java)
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    // function that calculates the input numbers.
+
     private fun calculation(num:Int) {
 
         val viewOne   = num.toString().toInt()
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             high_score_value.text = current_score_value.text
         }
     }
-    //function that adds two numbers & prints it out in result view.
+
     private fun sumOfTheScores(inputOne: Int, inputTwo: Int){
 
         val result = inputOne + inputTwo
@@ -94,15 +94,16 @@ class MainActivity : AppCompatActivity() {
         }
         else if (result_view_two.text.isEmpty()) {
 
-            var secondResult = result_of_view_one.text.toString().toInt() + result
+            val secondResult = result_of_view_one.text.toString().toInt() + result
             result_view_two.text = secondResult.toString()
             current_score_value.text = result_view_two.text
         }
         else  {
 
-            var thirdResult = result_view_two.text.toString().toInt() + result
+            val thirdResult = result_view_two.text.toString().toInt() + result
             result_view_three.text = thirdResult.toString()
             current_score_value.text = result_view_three.text
         }
     }
 } // Class
+
