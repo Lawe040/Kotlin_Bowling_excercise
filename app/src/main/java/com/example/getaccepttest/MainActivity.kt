@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
             score_view_two.text = "$viewTwo"
 
-            sumOfTwoInts(inputOne = score_view_one.text.toString().toInt(),
+            sumOfTheScores(inputOne = score_view_one.text.toString().toInt(),
                 inputTwo = score_view_two.text.toString().toInt())
         }
         else if (score_view_three.text.isEmpty()) {
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
             score_view_four.text = "$viewFour"
 
-             sumOfTwoInts(inputOne = score_view_three.text.toString().toInt(),
+             sumOfTheScores(inputOne = score_view_three.text.toString().toInt(),
                 inputTwo = score_view_four.text.toString().toInt())
         }
         else if (score_view_five.text.isEmpty()) {
@@ -66,32 +66,33 @@ class MainActivity : AppCompatActivity() {
 
             score_view_six.text = "$viewSix"
 
-            sumOfTwoInts(inputOne = score_view_five.text.toString().toInt(),
+            sumOfTheScores(inputOne = score_view_five.text.toString().toInt(),
                 inputTwo = score_view_six.text.toString().toInt())
 
             high_score_value.text = current_score_value.text
         }
     }
     //function that adds two numbers & prints it out in result view.
-    private fun sumOfTwoInts(inputOne: Int, inputTwo: Int){
+    private fun sumOfTheScores(inputOne: Int, inputTwo: Int){
 
-        val mySavedSum = DataStorage(this)
-        var sumCount = mySavedSum.getCurrentSum()
         val result = inputOne + inputTwo
 
-        sumCount  = result
-        mySavedSum.setCurrentSum(sumCount)
-        current_score_value.text = sumCount.toString()
-
         if (result_of_view_one.text.isEmpty()) {
+
             result_of_view_one.text = result.toString()
+            current_score_value.text = result_of_view_one.text
         }
         else if (result_view_two.text.isEmpty()) {
 
-            result_view_two.text = result.toString()
+            var secondResult = result_of_view_one.text.toString().toInt() + result
+            result_view_two.text = secondResult.toString()
+            current_score_value.text = result_view_two.text
         }
         else  {
-            result_view_three.text = result.toString()
+
+            var thirdResult = result_view_two.text.toString().toInt() + result
+            result_view_three.text = thirdResult.toString()
+            current_score_value.text = result_view_three.text
         }
     }
 } // Class
