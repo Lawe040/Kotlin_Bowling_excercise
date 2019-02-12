@@ -18,4 +18,10 @@
     <string name="current_score">Current Score:</string>
     <string name="_00">0</string>
     <string name="restart">Restart</string>
+    <string name="spare">Spare</string>
+    <string name="strike">Strike</string>
+    <string name="x">X</string>
+    <string name="strike_view_2">strike_view_2</string>
+    <string name="strike_view_three">strike_view_three</string>
+    <string name="_x">X</string>
 </resources>
