@@ -10,8 +10,8 @@ class MainActivity : AppCompatActivity() {
     
     private val scoreFullPoint = 20
     private val scoreHalfPoint = 10
-    private val nullNumber     = 0
 
+    var allFunctions = AllFunctions()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
    private fun numberButtonClicked() {
 
         val theNumberButtons = arrayOf(button_number_zero, button_number_one, button_number_two,
@@ -42,75 +41,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun calculation(num:Int) {
 
-        if (score_view_one.text.isEmpty()) {
+        if (score_view_one.text.isEmpty() || score_view_two.text.isEmpty()) {
 
-            score_view_one.text = "$num"
+            allFunctions.TextView_One_And_Two_Input_Values(num,score_view_one,score_view_two,
+                result_view_one, current_score_value)
         }
 
-        else if (score_view_two.text.isEmpty()) {
+        else if (score_view_three.text.isEmpty() || score_view_four.text.isEmpty()) {
 
-           score_view_two.text = "$num"
-
-           sumOfTheScores(scoreInputOne = score_view_one.text.toString().toInt(),
-                scoreInputTwo = score_view_two.text.toString().toInt())
+            allFunctions.TextView_Three_And_Four_Input_Values(num,score_view_three,
+                score_view_four,result_view_two,current_score_value,result_view_one)
         }
 
-        else if (score_view_three.text.isEmpty()) {
+        else if (score_view_five.text.isEmpty() || score_view_six.text.isEmpty()) {
 
-          score_view_three.text = "$num"
-        }
-
-        else if (score_view_four.text.isEmpty()) {
-
-            score_view_four.text = "$num"
-
-            sumOfTheScores(scoreInputOne = score_view_three.text.toString().toInt(),
-                scoreInputTwo = score_view_four.text.toString().toInt())
-        }
-
-        else if (score_view_five.text.isEmpty()) {
-
-            score_view_five.text = "$num"
-        }
-
-        else if (score_view_six.text.isEmpty()) {
-
-            score_view_six.text = "$num"
-
-            sumOfTheScores(scoreInputOne = score_view_five.text.toString().toInt(),
-                scoreInputTwo = score_view_six.text.toString().toInt())
-
-            high_score_value.text = current_score_value.text
-        }
-    }
-
-    private fun sumOfTheScores(scoreInputOne: Int, scoreInputTwo: Int){
-
-        val result = scoreInputOne + scoreInputTwo
-
-        if (result_view_one.text.isEmpty()) {
-
-            result_view_one.text = result.toString()
-            current_score_value.text = result_view_one.text
-        }
-
-        else if (result_view_two.text.isEmpty()) {
-
-            val secondResult = result_view_one.text.toString().toInt() + result
-
-            result_view_two.text = secondResult.toString()
-            current_score_value.text = result_view_two.text
-        }
-
-        else {
-
-            val thirdResult = result_view_two.text.toString().toInt() + result
-
-            result_view_three.text = thirdResult.toString()
-            current_score_value.text = result_view_three.text
+            allFunctions.TextView_Five_And_Six_Input_Values(num,score_view_five,
+                score_view_six,result_view_three,result_view_two, current_score_value, high_score_value)
         }
     }
 
@@ -120,46 +68,38 @@ class MainActivity : AppCompatActivity() {
             
             if (score_view_one.text.isEmpty() && score_view_two.text.isEmpty()) {
 
-                score_view_one.text        = nullNumber.toString()
-                score_view_two.text        = nullNumber.toString()
-                score_view_one.visibility  = View.GONE
-                score_view_two.visibility  = View.GONE
-                strike_view_one.visibility = View.VISIBLE
+                allFunctions.dummyIntDouble(score_view_one, score_view_two)
+                allFunctions.ViewReplacementDouble(score_view_one,score_view_two,strike_view_one)
 
-                result_view_one.text       = "$scoreFullPoint"
-                current_score_value.text   = result_view_one.text
+                result_view_one.text = "$scoreFullPoint"
+                current_score_value.text = result_view_one.text
             }
 
             else if (score_view_one.text.isNotEmpty() && score_view_two.text.isEmpty()) {
 
-                score_view_two.text        = nullNumber.toString()
-                score_view_two.visibility  = View.GONE
-                strike_view_two.visibility = View.VISIBLE
-                strike_view_two.text       = "/"
+                allFunctions.dummyIntSingle(score_view_two)
+                allFunctions.ViewReplacementSingle(score_view_two, strike_view_two)
 
-                result_view_one.text       = (score_view_one.text.toString().toInt() + scoreHalfPoint).toString()
-                current_score_value.text   = result_view_one.text
+                strike_view_two.text = "/"
+                result_view_one.text = (score_view_one.text.toString().toInt() + scoreHalfPoint).toString()
+                current_score_value.text = result_view_one.text
             }
 
             else if (score_view_two.text.isNotEmpty() && score_view_three.text.isEmpty()) {
 
-                score_view_three.text        = nullNumber.toString()
-                score_view_four.text         = nullNumber.toString()
-                score_view_three.visibility  = View.GONE
-                score_view_four.visibility   = View.GONE
-                strike_view_three.visibility = View.VISIBLE
+                allFunctions.dummyIntDouble(score_view_three, score_view_four)
+                allFunctions.ViewReplacementDouble(score_view_three,score_view_four, strike_view_three)
 
                 result_view_two.text = ((result_view_one.text.toString().toInt() + scoreFullPoint).toString())
                 current_score_value.text = result_view_two.text
-
             }
 
             else if (score_view_three.text.isNotEmpty() && score_view_four.text.isEmpty()) {
 
-                score_view_four.text        = nullNumber.toString()
-                score_view_four.visibility  = View.GONE
-                strike_view_four.visibility = View.VISIBLE
-                strike_view_four.text       = "/"
+                allFunctions.dummyIntSingle(score_view_four)
+                allFunctions.ViewReplacementSingle(score_view_four,strike_view_four)
+
+                strike_view_four.text = "/"
 
                 result_view_two.text = ((result_view_one.text.toString().toInt() +
                         score_view_three.text.toString().toInt() + scoreHalfPoint).toString())
@@ -169,11 +109,8 @@ class MainActivity : AppCompatActivity() {
 
             else if (score_view_four.text.isNotEmpty() && score_view_five.text.isEmpty()) {
 
-                score_view_five.text        = nullNumber.toString()
-                score_view_six.text         = nullNumber.toString()
-                score_view_five.visibility  = View.GONE
-                score_view_six.visibility   = View.GONE
-                strike_view_five.visibility = View.VISIBLE
+                allFunctions.dummyIntDouble(score_view_five, score_view_six)
+                allFunctions.ViewReplacementDouble(score_view_five,score_view_six,strike_view_five)
 
                 result_view_three.text = ((result_view_two.text.toString().toInt() + scoreFullPoint).toString())
 
@@ -183,10 +120,10 @@ class MainActivity : AppCompatActivity() {
 
             else if (score_view_five.text.isNotEmpty() && score_view_six.text.isEmpty()) {
 
-                score_view_six.text        = nullNumber.toString()
-                score_view_six.visibility  = View.GONE
-                strike_view_six.visibility = View.VISIBLE
-                strike_view_six.text       = "/"
+                allFunctions.dummyIntSingle(score_view_six)
+                allFunctions.ViewReplacementSingle(score_view_six,strike_view_six)
+
+                strike_view_six.text = "/"
 
                 result_view_three.text = ((result_view_two.text.toString().toInt()
                         + score_view_five.text.toString().toInt() + scoreHalfPoint).toString())
