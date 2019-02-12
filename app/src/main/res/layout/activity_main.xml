@@ -258,4 +258,19 @@
             android:id="@+id/textView14" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/restart_button" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:background="@color/colorAccent"/>
+    <Button
+            android:text="Strike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/strike_button" app:layout_constraintStart_toEndOf="@+id/restart_button"
+            android:layout_marginStart="8dp" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" style="@android:style/Widget.Button"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/spare_button"/>
+    <Button
+            android:text="Spare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spare_button" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" style="@android:style/Widget.Button"/>
 </android.support.constraint.ConstraintLayout>
