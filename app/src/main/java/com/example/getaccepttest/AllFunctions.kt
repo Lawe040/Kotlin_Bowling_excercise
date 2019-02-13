@@ -35,9 +35,10 @@ class AllFunctions  {
 
             scoreViewFour.text = "$number"
 
-            viewThatShowsResultTwo.text = additoinFunction_Two_Int(convertToInt(scoreViewThree),convertToInt(PrevResult)).toString()
+            viewThatShowsResultTwo.text =
+                additoinFunction_Two_Int(scoreViewThree.text.toString().toInt() , scoreViewFour.text.toString().toInt()).toString()
 
-            val newResult: Int = additoinFunction_Two_Int(convertToInt(viewThatShowsResultTwo),convertToInt(PrevResult))
+            val newResult: Int = additoinFunction_Two_Int(convertToInt(PrevResult),convertToInt(viewThatShowsResultTwo))
 
             viewThatShowsResultTwo.text = newResult.toString()
             currentValueViewTwo.text = viewThatShowsResultTwo.text
