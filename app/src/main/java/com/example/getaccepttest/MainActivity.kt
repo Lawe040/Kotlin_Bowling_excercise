@@ -3,7 +3,6 @@ package com.example.getaccepttest
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -61,7 +60,6 @@ class MainActivity : AppCompatActivity() {
                 score_view_six,result_view_three,result_view_two, current_score_value, high_score_value)
         }
     }
-
     private  fun strike_And_Spare_Result() {
 
         strike_button.setOnClickListener {
@@ -70,66 +68,52 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntDouble(score_view_one, score_view_two)
                 allFunctions.ViewReplacementDouble(score_view_one,score_view_two,strike_view_one)
-
-                result_view_one.text = "$scoreFullPoint"
-                current_score_value.text = result_view_one.text
+                allFunctions.strikePointViewOne(result_view_one, scoreFullPoint)
+                allFunctions.currentScore(current_score_value,result_view_one)
             }
 
             else if (score_view_one.text.isNotEmpty() && score_view_two.text.isEmpty()) {
 
                 allFunctions.dummyIntSingle(score_view_two)
                 allFunctions.ViewReplacementSingle(score_view_two, strike_view_two)
-
+                allFunctions.sparePointViewOne(score_view_one,scoreHalfPoint,result_view_one)
+                allFunctions.currentScore(current_score_value,result_view_one)
                 strike_view_two.text = "/"
-                result_view_one.text = (score_view_one.text.toString().toInt() + scoreHalfPoint).toString()
-                current_score_value.text = result_view_one.text
             }
 
             else if (score_view_two.text.isNotEmpty() && score_view_three.text.isEmpty()) {
 
                 allFunctions.dummyIntDouble(score_view_three, score_view_four)
                 allFunctions.ViewReplacementDouble(score_view_three,score_view_four, strike_view_three)
-
-                result_view_two.text = ((result_view_one.text.toString().toInt() + scoreFullPoint).toString())
-                current_score_value.text = result_view_two.text
+                allFunctions.strikePointViewTwo(result_view_two,scoreFullPoint, result_view_one)
+                allFunctions.currentScore(current_score_value,result_view_two)
             }
 
             else if (score_view_three.text.isNotEmpty() && score_view_four.text.isEmpty()) {
 
                 allFunctions.dummyIntSingle(score_view_four)
                 allFunctions.ViewReplacementSingle(score_view_four,strike_view_four)
-
+                allFunctions.sparePointViewTwo(score_view_three,scoreHalfPoint,result_view_two,result_view_one)
+                allFunctions.currentScore(current_score_value,result_view_two)
                 strike_view_four.text = "/"
 
-                result_view_two.text = ((result_view_one.text.toString().toInt() +
-                        score_view_three.text.toString().toInt() + scoreHalfPoint).toString())
-
-                current_score_value.text = result_view_two.text
             }
 
             else if (score_view_four.text.isNotEmpty() && score_view_five.text.isEmpty()) {
 
                 allFunctions.dummyIntDouble(score_view_five, score_view_six)
                 allFunctions.ViewReplacementDouble(score_view_five,score_view_six,strike_view_five)
-
-                result_view_three.text = ((result_view_two.text.toString().toInt() + scoreFullPoint).toString())
-
-                current_score_value.text = result_view_three.text
-                high_score_value.text = result_view_three.text
+                allFunctions.strikePointViewThree(result_view_three,scoreFullPoint,result_view_two)
+                allFunctions.currentScoreWithHighScore(current_score_value,result_view_three,high_score_value)
             }
 
             else if (score_view_five.text.isNotEmpty() && score_view_six.text.isEmpty()) {
 
                 allFunctions.dummyIntSingle(score_view_six)
                 allFunctions.ViewReplacementSingle(score_view_six,strike_view_six)
-
+                allFunctions.sparePointViewThree(score_view_five,scoreHalfPoint,result_view_three,result_view_two)
+                allFunctions.currentScoreWithHighScore(current_score_value,result_view_three,high_score_value)
                 strike_view_six.text = "/"
-
-                result_view_three.text = ((result_view_two.text.toString().toInt()
-                        + score_view_five.text.toString().toInt() + scoreHalfPoint).toString())
-
-                current_score_value.text = result_view_three.text
-                high_score_value.text = result_view_three.text
             }
         }
     }

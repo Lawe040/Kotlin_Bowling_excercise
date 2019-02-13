@@ -5,8 +5,9 @@ import android.widget.TextView
 
 class AllFunctions  {
 
-    fun TextView_One_And_Two_Input_Values (number: Int, scoreViewOne: TextView, scoreViewTwo : TextView,
-                                           viewThatShowsResultOne : TextView, currentValueViewOne: TextView) {
+    fun TextView_One_And_Two_Input_Values
+                (number: Int, scoreViewOne: TextView,
+         scoreViewTwo : TextView, viewThatShowsResultOne : TextView, currentValueViewOne: TextView) {
 
         if (scoreViewOne.text.isEmpty()) {
 
@@ -23,9 +24,9 @@ class AllFunctions  {
         }
     }
 
-    fun TextView_Three_And_Four_Input_Values (number: Int, scoreViewThree: TextView, scoreViewFour : TextView,
-                                           viewThatShowsResultTwo : TextView, currentValueViewTwo : TextView,
-                                              PrevResult : TextView) {
+    fun TextView_Three_And_Four_Input_Values
+                (number: Int, scoreViewThree: TextView, scoreViewFour : TextView, viewThatShowsResultTwo : TextView,
+   currentValueViewTwo : TextView, PrevResult : TextView) {
 
         if (scoreViewThree.text.isEmpty()) {
 
@@ -35,20 +36,20 @@ class AllFunctions  {
 
             scoreViewFour.text = "$number"
 
-            viewThatShowsResultTwo.text = (scoreViewThree.text.toString().toInt()
-                    + scoreViewFour.text.toString().toInt()).toString()
+            viewThatShowsResultTwo.text =
+                (scoreViewThree.text.toString().toInt() + scoreViewFour.text.toString().toInt()).toString()
 
             val newResult: Int = viewThatShowsResultTwo.text.toString().toInt() + PrevResult.text.toString().toInt()
 
             viewThatShowsResultTwo.text = newResult.toString()
             currentValueViewTwo.text = viewThatShowsResultTwo.text
         }
-
     }
 
-    fun TextView_Five_And_Six_Input_Values (number: Int, scoreViewFive: TextView, scoreViewSix : TextView,
-                                              viewThatShowsResultThree : TextView, PrevResultTwo : TextView,
-                                            currentValueViewThree: TextView, highscoreValue : TextView) {
+    fun TextView_Five_And_Six_Input_Values
+                (number: Int, scoreViewFive: TextView,
+                 scoreViewSix : TextView, viewThatShowsResultThree : TextView,
+                 PrevResultTwo : TextView, currentValueViewThree: TextView, highscoreValue : TextView) {
 
         if (scoreViewFive.text.isEmpty()) {
 
@@ -95,5 +96,52 @@ class AllFunctions  {
 
         var dummyInt = 0
         viewToConvert.text    = dummyInt.toString()
+    }
+
+    fun strikePointViewOne (resultView : TextView, scoreViewOne: Int) {
+        resultView.text = scoreViewOne.toString()
+    }
+
+    fun strikePointViewTwo (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
+
+        var calculate = 0
+        calculate = scoreViewOne + prevResult.text.toString().toInt()
+        resultView.text = calculate.toString()
+    }
+
+    fun strikePointViewThree (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
+
+        var calculate = 0
+        calculate = scoreViewOne + prevResult.text.toString().toInt()
+        resultView.text = calculate.toString()
+    }
+
+    fun sparePointViewOne (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView) {
+        resultView.text = (scoreToAdd.text.toString().toInt() + scoreViewOne.toString().toInt()).toString()
+    }
+
+    fun sparePointViewTwo (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView, prevResult: TextView) {
+
+        var calculateTwo = 0
+
+        calculateTwo = scoreViewOne + prevResult.text.toString().toInt() + scoreToAdd.text.toString().toInt()
+        resultView.text = calculateTwo.toString()
+    }
+
+    fun sparePointViewThree (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView, prevResult: TextView) {
+
+        var calculateTwo = 0
+
+        calculateTwo = scoreViewOne + prevResult.text.toString().toInt() + scoreToAdd.text.toString().toInt()
+        resultView.text = calculateTwo.toString()
+    }
+
+    fun currentScore(currentScore : TextView, resultView: TextView) {
+        currentScore.text = resultView.text
+    }
+
+    fun currentScoreWithHighScore(currentScore : TextView, resultView: TextView, highscoreValue: TextView) {
+        currentScore.text = resultView.text
+        highscoreValue.text = currentScore.text
     }
 }
