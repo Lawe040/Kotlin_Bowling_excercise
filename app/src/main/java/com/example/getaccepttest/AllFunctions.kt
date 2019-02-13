@@ -7,7 +7,7 @@ class AllFunctions  {
 
     fun TextView_One_And_Two_Input_Values
                 (number: Int, scoreViewOne: TextView,
-         scoreViewTwo : TextView, viewThatShowsResultOne : TextView, currentValueViewOne: TextView) {
+                 scoreViewTwo : TextView, viewThatShowsResultOne : TextView, currentValueViewOne: TextView) {
 
         if (scoreViewOne.text.isEmpty()) {
 
@@ -24,7 +24,7 @@ class AllFunctions  {
 
     fun TextView_Three_And_Four_Input_Values
                 (number: Int, scoreViewThree: TextView, scoreViewFour : TextView, viewThatShowsResultTwo : TextView,
-   currentValueViewTwo : TextView, PrevResult : TextView) {
+                 currentValueViewTwo : TextView, PrevResult : TextView) {
 
         if (scoreViewThree.text.isEmpty()) {
 

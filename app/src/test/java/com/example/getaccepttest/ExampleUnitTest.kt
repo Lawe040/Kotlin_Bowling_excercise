@@ -29,8 +29,8 @@ class ExampleUnitTest {
     @Test
     fun testOne_additionFunction() {
 
-        var testOne = allFunc.additoinFunction_Two_Int(3,17)
-        assertEquals(testOne,20)
+        var testOne = allFunc.additoinFunction_Two_Int(8000,8000)
+        assertEquals(testOne,16000)
     }
 
     @Test
