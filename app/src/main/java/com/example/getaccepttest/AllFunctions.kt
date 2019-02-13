@@ -17,9 +17,7 @@ class AllFunctions  {
 
             scoreViewTwo.text = "$number"
 
-            viewThatShowsResultOne.text = (scoreViewOne.text.toString().toInt()
-                    + scoreViewTwo.text.toString().toInt()).toString()
-
+            viewThatShowsResultOne.text = additoinFunction_Two_Int(convertToInt(scoreViewOne), convertToInt(scoreViewTwo)).toString()
             currentValueViewOne.text = viewThatShowsResultOne.text
         }
     }
@@ -32,14 +30,14 @@ class AllFunctions  {
 
             scoreViewThree.text = "$number"
         }
+
         else if (scoreViewFour.text.isEmpty()) {
 
             scoreViewFour.text = "$number"
 
-            viewThatShowsResultTwo.text =
-                (scoreViewThree.text.toString().toInt() + scoreViewFour.text.toString().toInt()).toString()
+            viewThatShowsResultTwo.text = additoinFunction_Two_Int(convertToInt(scoreViewThree),convertToInt(PrevResult)).toString()
 
-            val newResult: Int = viewThatShowsResultTwo.text.toString().toInt() + PrevResult.text.toString().toInt()
+            val newResult: Int = additoinFunction_Two_Int(convertToInt(viewThatShowsResultTwo),convertToInt(PrevResult))
 
             viewThatShowsResultTwo.text = newResult.toString()
             currentValueViewTwo.text = viewThatShowsResultTwo.text
@@ -59,11 +57,9 @@ class AllFunctions  {
 
             scoreViewSix.text = "$number"
 
-            viewThatShowsResultThree.text = (scoreViewFive.text.toString().toInt()
-                    + scoreViewSix.text.toString().toInt()).toString()
+            viewThatShowsResultThree.text = additoinFunction_Two_Int(convertToInt(scoreViewFive), convertToInt(scoreViewSix)).toString()
 
-            val newResult: Int = viewThatShowsResultThree.text.toString().toInt() + PrevResultTwo.text.toString().toInt()
-
+            val newResult: Int = additoinFunction_Two_Int(convertToInt(viewThatShowsResultThree),convertToInt(PrevResultTwo))
             viewThatShowsResultThree.text = newResult.toString()
 
             currentValueViewThree.text = viewThatShowsResultThree.text
@@ -98,41 +94,47 @@ class AllFunctions  {
         viewToConvert.text    = dummyInt.toString()
     }
 
+    fun additoinFunction_Two_Int(inputIntOne:Int, inputIntTwo: Int): Int {
+
+            val sum = inputIntOne + inputIntTwo
+            return sum
+    }
+
+    fun additoinFunction_Three_Int(inputIntOne:Int, inputIntTwo: Int, inputIntThree: Int): Int {
+
+        val sum = inputIntOne + inputIntTwo + inputIntThree
+        return sum
+    }
+
     fun strikePointViewOne (resultView : TextView, scoreViewOne: Int) {
         resultView.text = scoreViewOne.toString()
     }
 
     fun strikePointViewTwo (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
 
-        var calculate = 0
-        calculate = scoreViewOne + prevResult.text.toString().toInt()
+        var calculate =  additoinFunction_Two_Int(scoreViewOne,convertToInt(prevResult))
         resultView.text = calculate.toString()
     }
 
     fun strikePointViewThree (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
 
-        var calculate = 0
-        calculate = scoreViewOne + prevResult.text.toString().toInt()
+        var calculate = additoinFunction_Two_Int(scoreViewOne, convertToInt(prevResult))
         resultView.text = calculate.toString()
     }
 
     fun sparePointViewOne (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView) {
-        resultView.text = (scoreToAdd.text.toString().toInt() + scoreViewOne.toString().toInt()).toString()
+        resultView.text = (convertToInt(scoreToAdd) + scoreViewOne.toString().toInt()).toString()
     }
 
     fun sparePointViewTwo (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView, prevResult: TextView) {
 
-        var calculateTwo = 0
-
-        calculateTwo = scoreViewOne + prevResult.text.toString().toInt() + scoreToAdd.text.toString().toInt()
+        var calculateTwo = additoinFunction_Three_Int(scoreViewOne,convertToInt(prevResult),convertToInt(scoreToAdd))
         resultView.text = calculateTwo.toString()
     }
 
     fun sparePointViewThree (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView, prevResult: TextView) {
 
-        var calculateTwo = 0
-
-        calculateTwo = scoreViewOne + prevResult.text.toString().toInt() + scoreToAdd.text.toString().toInt()
+        var calculateTwo = additoinFunction_Three_Int(scoreViewOne,convertToInt(prevResult),convertToInt(scoreToAdd))
         resultView.text = calculateTwo.toString()
     }
 
@@ -143,5 +145,10 @@ class AllFunctions  {
     fun currentScoreWithHighScore(currentScore : TextView, resultView: TextView, highscoreValue: TextView) {
         currentScore.text = resultView.text
         highscoreValue.text = currentScore.text
+    }
+
+    fun convertToInt(textViewToConvert: TextView): Int {
+        val convertedToInt = textViewToConvert.text.toString().toInt()
+        return convertedToInt
     }
 }

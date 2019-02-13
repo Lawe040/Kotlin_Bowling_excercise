@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.annotations.TestOnly
 
 class MainActivity : AppCompatActivity() {
     
@@ -60,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                 score_view_six,result_view_three,result_view_two, current_score_value, high_score_value)
         }
     }
+
     private  fun strike_And_Spare_Result() {
 
         strike_button.setOnClickListener {
