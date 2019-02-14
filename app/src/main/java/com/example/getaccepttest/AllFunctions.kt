@@ -25,7 +25,7 @@ class AllFunctions {
 
     fun TextView_Three_And_Four_Input_Values
                 (number: Int, scoreViewThree: TextView, scoreViewFour : TextView, viewThatShowsResultTwo : TextView,
-                 currentValueViewTwo : TextView, PrevResult : TextView) {
+                 currentValueViewTwo : TextView, PrevResult : TextView, viewFive : TextView) {
 
         if (scoreViewThree.text.isEmpty()) {
 
@@ -43,8 +43,8 @@ class AllFunctions {
             val newResult: Int = additoinFunction_Two_Int(convertToInt(PrevResult),
                 convertToInt(viewThatShowsResultTwo))
 
-            viewThatShowsResultTwo.text = newResult.toString()
-            currentValueViewTwo.text = viewThatShowsResultTwo.text
+                viewThatShowsResultTwo.text = newResult.toString()
+                currentValueViewTwo.text = viewThatShowsResultTwo.text
         }
     }
 
@@ -66,6 +66,7 @@ class AllFunctions {
 
             val newResult: Int = additoinFunction_Two_Int(convertToInt(viewThatShowsResultThree),
                 convertToInt(PrevResultTwo))
+
             viewThatShowsResultThree.text = newResult.toString()
 
             currentValueViewThree.text = viewThatShowsResultThree.text
@@ -171,5 +172,18 @@ class AllFunctions {
         }
 
             return noBonus
+    }
+
+    fun if_First_Two_Shots_is_Strikes(compareResult : Int) : Int {
+
+        var numberToAdd = 20
+        var sum : Int = numberToAdd + compareResult
+        var number = 0
+
+        if (compareResult == 80) {
+
+            return sum
+        }
+        return number
     }
 }

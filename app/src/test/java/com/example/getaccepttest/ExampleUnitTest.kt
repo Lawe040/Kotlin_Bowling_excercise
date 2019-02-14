@@ -12,6 +12,7 @@ import org.junit.Assert.*
 class ExampleUnitTest {
 
     val allFunc = AllFunctions()
+    val mainTest = MainActivity()
 
 
     @Test
@@ -19,7 +20,6 @@ class ExampleUnitTest {
 
         var testOne = allFunc.additoinFunction_Two_Int(8,8)
         assertEquals(testOne,16)
-
     }
 
     @Test
@@ -34,5 +34,19 @@ class ExampleUnitTest {
 
         var testIfResultIsRight = allFunc.bonusRewardOne(120)
         assertEquals(testIfResultIsRight, 610)
+    }
+
+   /* @Test
+    fun test_four(){
+
+        var testCalc = mainTest.calculation()
+
+    } */
+
+    @Test
+    fun test_five() {
+
+        var testfive = allFunc.if_First_Two_Shots_is_Strikes(0)
+        assertEquals(testfive, 0)
     }
 }

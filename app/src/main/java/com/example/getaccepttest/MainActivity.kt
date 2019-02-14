@@ -7,8 +7,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     
-    private val scoreFullPoint = 20
-    private val scoreHalfPoint = 10
+    private val strike = 40
+    private val spare = 25
+    var dummy = 0
 
     var allFunctions = AllFunctions()
 
@@ -36,27 +37,29 @@ class MainActivity : AppCompatActivity() {
         for (i in theNumberButtons.indices) {
 
             theNumberButtons[i].setOnClickListener {
-               calculation(i)
+                dummy = i
+                calculation()
             }
         }
     }
-    private fun calculation(num:Int) {
+
+    fun calculation() {
 
         if (score_view_one.text.isEmpty() || score_view_two.text.isEmpty()) {
 
-            allFunctions.TextView_One_And_Two_Input_Values(num,score_view_one,score_view_two,
+            allFunctions.TextView_One_And_Two_Input_Values(dummy,score_view_one,score_view_two,
                 result_view_one, current_score_value)
         }
 
         else if (score_view_three.text.isEmpty() || score_view_four.text.isEmpty()) {
 
-            allFunctions.TextView_Three_And_Four_Input_Values(num,score_view_three,
-                score_view_four,result_view_two,current_score_value,result_view_one)
+            allFunctions.TextView_Three_And_Four_Input_Values(dummy,score_view_three,
+                score_view_four,result_view_two,current_score_value,result_view_one, score_view_five)
         }
 
         else if (score_view_five.text.isEmpty() || score_view_six.text.isEmpty()) {
 
-            allFunctions.TextView_Five_And_Six_Input_Values(num,score_view_five,
+            allFunctions.TextView_Five_And_Six_Input_Values(dummy,score_view_five,
                 score_view_six,result_view_three,result_view_two, current_score_value, high_score_value)
         }
     }
@@ -69,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntDouble(score_view_one, score_view_two)
                 allFunctions.ViewReplacementDouble(score_view_one,score_view_two,strike_view_one)
-                allFunctions.strikePointViewOne(result_view_one, scoreFullPoint)
+                allFunctions.strikePointViewOne(result_view_one, strike)
                 allFunctions.currentScore(current_score_value,result_view_one)
             }
 
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntSingle(score_view_two)
                 allFunctions.ViewReplacementSingle(score_view_two, strike_view_two)
-                allFunctions.sparePointViewOne(score_view_one,scoreHalfPoint,result_view_one)
+                allFunctions.sparePointViewOne(score_view_one,spare,result_view_one)
                 allFunctions.currentScore(current_score_value,result_view_one)
                 strike_view_two.text = "/"
             }
@@ -86,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntDouble(score_view_three, score_view_four)
                 allFunctions.ViewReplacementDouble(score_view_three,score_view_four, strike_view_three)
-                allFunctions.strikePointViewTwo(result_view_two,scoreFullPoint, result_view_one)
+                allFunctions.strikePointViewTwo(result_view_two,strike, result_view_one)
                 allFunctions.currentScore(current_score_value,result_view_two)
             }
 
@@ -94,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntSingle(score_view_four)
                 allFunctions.ViewReplacementSingle(score_view_four,strike_view_four)
-                allFunctions.sparePointViewTwo(score_view_three,scoreHalfPoint,result_view_two,result_view_one)
+                allFunctions.sparePointViewTwo(score_view_three,spare,result_view_two,result_view_one)
                 allFunctions.currentScore(current_score_value,result_view_two)
                 strike_view_four.text = "/"
 
@@ -104,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntDouble(score_view_five, score_view_six)
                 allFunctions.ViewReplacementDouble(score_view_five,score_view_six,strike_view_five)
-                allFunctions.strikePointViewThree(result_view_three,scoreFullPoint,result_view_two)
+                allFunctions.strikePointViewThree(result_view_three,strike,result_view_two)
                 allFunctions.currentScoreWithHighScore(current_score_value,result_view_three,high_score_value)
             }
 
@@ -112,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 
                 allFunctions.dummyIntSingle(score_view_six)
                 allFunctions.ViewReplacementSingle(score_view_six,strike_view_six)
-                allFunctions.sparePointViewThree(score_view_five,scoreHalfPoint,result_view_three,result_view_two)
+                allFunctions.sparePointViewThree(score_view_five,spare,result_view_three,result_view_two)
                 allFunctions.currentScoreWithHighScore(current_score_value,result_view_three,high_score_value)
                 strike_view_six.text = "/"
             }
