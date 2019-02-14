@@ -3,7 +3,7 @@ package com.example.getaccepttest
 import android.view.View
 import android.widget.TextView
 
-class AllFunctions  {
+class AllFunctions {
 
     fun TextView_One_And_Two_Input_Values
                 (number: Int, scoreViewOne: TextView,
@@ -17,7 +17,8 @@ class AllFunctions  {
 
             scoreViewTwo.text = "$number"
 
-            viewThatShowsResultOne.text = additoinFunction_Two_Int(convertToInt(scoreViewOne), convertToInt(scoreViewTwo)).toString()
+            viewThatShowsResultOne.text = additoinFunction_Two_Int(convertToInt(scoreViewOne),
+                convertToInt(scoreViewTwo)).toString()
             currentValueViewOne.text = viewThatShowsResultOne.text
         }
     }
@@ -36,9 +37,11 @@ class AllFunctions  {
             scoreViewFour.text = "$number"
 
             viewThatShowsResultTwo.text =
-                additoinFunction_Two_Int(scoreViewThree.text.toString().toInt() , scoreViewFour.text.toString().toInt()).toString()
+                additoinFunction_Two_Int(scoreViewThree.text.toString().toInt() ,
+                    scoreViewFour.text.toString().toInt()).toString()
 
-            val newResult: Int = additoinFunction_Two_Int(convertToInt(PrevResult),convertToInt(viewThatShowsResultTwo))
+            val newResult: Int = additoinFunction_Two_Int(convertToInt(PrevResult),
+                convertToInt(viewThatShowsResultTwo))
 
             viewThatShowsResultTwo.text = newResult.toString()
             currentValueViewTwo.text = viewThatShowsResultTwo.text
@@ -58,9 +61,11 @@ class AllFunctions  {
 
             scoreViewSix.text = "$number"
 
-            viewThatShowsResultThree.text = additoinFunction_Two_Int(convertToInt(scoreViewFive), convertToInt(scoreViewSix)).toString()
+            viewThatShowsResultThree.text = additoinFunction_Two_Int(convertToInt(scoreViewFive),
+                convertToInt(scoreViewSix)).toString()
 
-            val newResult: Int = additoinFunction_Two_Int(convertToInt(viewThatShowsResultThree),convertToInt(PrevResultTwo))
+            val newResult: Int = additoinFunction_Two_Int(convertToInt(viewThatShowsResultThree),
+                convertToInt(PrevResultTwo))
             viewThatShowsResultThree.text = newResult.toString()
 
             currentValueViewThree.text = viewThatShowsResultThree.text
@@ -103,8 +108,8 @@ class AllFunctions  {
 
     fun additoinFunction_Three_Int(inputIntOne:Int, inputIntTwo: Int, inputIntThree: Int): Int {
 
-        val sum = inputIntOne + inputIntTwo + inputIntThree
-        return sum
+        val sumTwo = inputIntOne + inputIntTwo + inputIntThree
+        return sumTwo
     }
 
     fun strikePointViewOne (resultView : TextView, scoreViewOne: Int) {
@@ -120,7 +125,8 @@ class AllFunctions  {
     fun strikePointViewThree (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
 
         var calculate = additoinFunction_Two_Int(scoreViewOne, convertToInt(prevResult))
-        resultView.text = calculate.toString()
+        var calculateTwo = bonusRewardOne(calculate)
+        resultView.text = calculateTwo.toString()
     }
 
     fun sparePointViewOne (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView) {
@@ -151,5 +157,19 @@ class AllFunctions  {
     fun convertToInt(textViewToConvert: TextView): Int {
         val convertedToInt = textViewToConvert.text.toString().toInt()
         return convertedToInt
+    }
+
+    fun bonusRewardOne(checkInt : Int): Int {
+
+        var rewardIfJackPot = 490
+        var noBonus = checkInt
+        var sum = rewardIfJackPot + checkInt
+
+        if (checkInt == 120) {
+
+            return sum
+        }
+
+            return noBonus
     }
 }
