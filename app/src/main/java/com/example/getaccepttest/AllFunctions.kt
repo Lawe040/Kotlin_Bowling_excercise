@@ -25,7 +25,7 @@ class AllFunctions {
 
     fun TextView_Three_And_Four_Input_Values
                 (number: Int, scoreViewThree: TextView, scoreViewFour : TextView, viewThatShowsResultTwo : TextView,
-                 currentValueViewTwo : TextView, PrevResult : TextView, viewFive : TextView) {
+                 currentValueViewTwo : TextView, PrevResult : TextView) {
 
         if (scoreViewThree.text.isEmpty()) {
 
@@ -45,8 +45,6 @@ class AllFunctions {
 
                 viewThatShowsResultTwo.text = newResult.toString()
                 currentValueViewTwo.text = viewThatShowsResultTwo.text
-
-
         }
     }
 
@@ -123,16 +121,17 @@ class AllFunctions {
 
         var calculate =  additoinFunction_Two_Int(scoreViewOne,convertToInt(prevResult))
         var applyBonus = if_First_Two_Shots_is_Strikes(calculate,scoreViewOne + convertToInt(prevResult))
+
         resultView.text = applyBonus.toString()
     }
 
     fun strikePointViewThree (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
 
-       // var calculate = additoinFunction_Two_Int(scoreViewOne, convertToInt(prevResult))
         var calculateTwo = bonusRewardOne(convertToInt(prevResult))
         var applyBonus = if_First_Two_Shots_is_Strikes(calculateTwo,scoreViewOne + convertToInt(prevResult))
 
         if (convertToInt(prevResult) == 330) {
+
             resultView.text = calculateTwo.toString()
 
         } else {

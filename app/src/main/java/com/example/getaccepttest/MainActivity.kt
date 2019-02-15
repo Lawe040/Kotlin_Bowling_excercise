@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         else if (score_view_three.text.isEmpty() || score_view_four.text.isEmpty()) {
 
             allFunctions.TextView_Three_And_Four_Input_Values(dummy,score_view_three,
-                score_view_four,result_view_two,current_score_value,result_view_one, score_view_five)
+                score_view_four,result_view_two,current_score_value,result_view_one)
         }
 
         else if (score_view_five.text.isEmpty() || score_view_six.text.isEmpty()) {
