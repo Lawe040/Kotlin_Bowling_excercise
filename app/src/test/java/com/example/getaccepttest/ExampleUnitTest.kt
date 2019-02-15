@@ -33,7 +33,7 @@ class ExampleUnitTest {
     fun test_three() {
 
         var testIfResultIsRight = allFunc.bonusRewardOne(120)
-        assertEquals(testIfResultIsRight, 610)
+        assertEquals(testIfResultIsRight, 120)
     }
 
     @Test
