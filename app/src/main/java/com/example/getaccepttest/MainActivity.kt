@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
     private val strike = 40
     private val spare = 25
     var dummy = 0
-
     var allFunctions = AllFunctions()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
    private fun numberButtonClicked() {
 
         val theNumberButtons = arrayOf(button_number_zero, button_number_one, button_number_two,

@@ -36,17 +36,10 @@ class ExampleUnitTest {
         assertEquals(testIfResultIsRight, 610)
     }
 
-   /* @Test
-    fun test_four(){
-
-        var testCalc = mainTest.calculation()
-
-    } */
-
     @Test
     fun test_five() {
 
-        var testfive = allFunc.if_First_Two_Shots_is_Strikes(0)
-        assertEquals(testfive, 0)
+        var testfive = allFunc.if_First_Two_Shots_is_Strikes(330,40)
+        assertEquals(testfive, 40)
     }
 }

@@ -45,6 +45,8 @@ class AllFunctions {
 
                 viewThatShowsResultTwo.text = newResult.toString()
                 currentValueViewTwo.text = viewThatShowsResultTwo.text
+
+
         }
     }
 
@@ -120,14 +122,22 @@ class AllFunctions {
     fun strikePointViewTwo (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
 
         var calculate =  additoinFunction_Two_Int(scoreViewOne,convertToInt(prevResult))
-        resultView.text = calculate.toString()
+        var applyBonus = if_First_Two_Shots_is_Strikes(calculate,scoreViewOne + convertToInt(prevResult))
+        resultView.text = applyBonus.toString()
     }
 
     fun strikePointViewThree (resultView : TextView, scoreViewOne: Int, prevResult : TextView) {
 
-        var calculate = additoinFunction_Two_Int(scoreViewOne, convertToInt(prevResult))
-        var calculateTwo = bonusRewardOne(calculate)
-        resultView.text = calculateTwo.toString()
+       // var calculate = additoinFunction_Two_Int(scoreViewOne, convertToInt(prevResult))
+        var calculateTwo = bonusRewardOne(convertToInt(prevResult))
+        var applyBonus = if_First_Two_Shots_is_Strikes(calculateTwo,scoreViewOne + convertToInt(prevResult))
+
+        if (convertToInt(prevResult) == 330) {
+            resultView.text = calculateTwo.toString()
+
+        } else {
+            resultView.text = applyBonus.toString()
+        }
     }
 
     fun sparePointViewOne (scoreToAdd : TextView,scoreViewOne: Int, resultView: TextView) {
@@ -162,28 +172,27 @@ class AllFunctions {
 
     fun bonusRewardOne(checkInt : Int): Int {
 
-        var rewardIfJackPot = 490
+        var rewardIfJackPot = 600
         var noBonus = checkInt
         var sum = rewardIfJackPot + checkInt
 
-        if (checkInt == 120) {
+        if (checkInt == 330) {
 
             return sum
         }
-
             return noBonus
     }
 
-    fun if_First_Two_Shots_is_Strikes(compareResult : Int) : Int {
+    fun if_First_Two_Shots_is_Strikes(compareResult : Int,current : Int) : Int {
 
-        var numberToAdd = 20
+        var numberToAdd = 250
         var sum : Int = numberToAdd + compareResult
-        var number = 0
 
         if (compareResult == 80) {
 
             return sum
         }
-        return number
+
+        return current
     }
 }
